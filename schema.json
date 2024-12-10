@@ -1,0 +1,241 @@
+{
+  "title": "Service",
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "id": "",
+  "required": [
+    "id",
+    "name",
+    "description",
+    "categories",
+    "countryHQ",
+    "website",
+    "applicationUrl",
+    "gdprReadyStatus",
+    "privacyUrl"
+  ],
+  "additionalProperties": false,
+  "properties": { 
+    "id": { 
+      "type": "string", 
+      "pattern": "[a-z0-9-]*$",
+      "description": "Unique indentifier for the service",
+      "examples": ["acme"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the service",
+      "examples": ["Acme"]
+    },
+    "description": {
+      "type": "string",
+      "description": "A description what the service does",
+      "examples": ["CRM & Customer platform for SMBs"]
+    },
+    "categories": {
+      "type": "array",
+      "description": "What category does this service belong to?",
+      "examples": ["CRM", "Customer Support"],
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "iconUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(https?|http?)://",
+      "description": "URL to the icon of the service (recommended size 400x400)",
+      "examples": ["https://camo.githubusercontent.com/60c99424ef78e45661021dd0c5896277ff846150/68747470733a2f2f73332e65752d63656e7472616c2d312e616d617a6f6e6177732e636f6d2f6d61726b6574696e672d6769746875622f69636f6e2e706e67"]
+    },
+    "countryHQ": {
+      "type": "string",
+      "description": "Country (ISO ALPHA-2 code) of HQ",
+      "examples": ["US"]
+    },
+    "website": {
+      "type": "string",
+      "description": "Website of the cloud service",
+      "examples": ["https://www.acme.com/"]
+    },
+    "applicationUrl": {
+      "type": "string",
+      "description": "Aplication url of the cloud service",
+      "examples": ["https://app.acme.com/"]
+    },
+    "twitter": {
+      "type": "string",
+      "description": "Twitter handle",
+      "examples": ["acme"]
+    },
+    "gdprReadyStatus": {
+      "description": "GDPR readiness status of this service",
+      "enum": [ 
+        "inProgress", 
+        "ready", 
+        "nonCompliant", 
+        "unknown" 
+      ],
+      "examples": ["inProgress"]
+    },
+    "privacyUrl": {
+      "type": "string",
+      "description": "Link to privacy policy",
+      "examples": ["https://www.acme.com/privacy"]
+    },
+    "dsarUrl": {
+      "type": "string",
+      "description": "Data Subject Access Rights URL"
+    },
+    "dpaUrl": {
+      "type": "string",
+      "description": "Data Processing Agreement URL"
+    },
+    "subprocessorsUrl": {
+      "type": "string",
+      "description": "Subprocessors overview URL"
+    },
+    "dataCenters": {
+      "type": "array",
+      "description": "Locations where data is hosted"
+    },
+    "hostingProviders": {
+      "type": "array",
+      "description": "Hosting providers"
+    },
+    "contacts" : {
+      "type": "array",
+      "description": "Appointed DPOs or privacy officers per region",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "name",
+          "email"
+        ],
+        "properties": {
+          "type": {
+            "enum": [ "DPO", "Privacy Officer", "Other" ],
+            "description": "Function",
+            "examples": ["DPO"]
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of DPO",
+            "examples": ["John Doe"]
+          }, 
+          "email": {
+            "type": "string",
+            "description": "Email of DPO",
+            "format": "email"
+          },
+          "Region": {
+            "type": "string",
+            "description": "Region where the contact is responsible",
+            "examples": ["Global"]
+          }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "ISO 27001",
+          "ISO 27002",
+          "ISO 27017",
+          "ISO 27018",
+          "C5",
+          "PCI DSS Level 1",
+          "PCI DSS Level 3.1",
+          "PCI DSS Level 3.2",
+          "PCI DSS Level 4",
+          "SOC 1",
+          "SOC 2 Type I",
+          "SOC 2 Type II",
+          "SOC 3",
+          "HIPAA",
+          "HITECH",
+          "RESO",
+          "ISAE 3000",
+          "EU-U.S. Privacy Shield",
+          "Swiss-U.S. Privacy Shield",
+          "CSA",
+          "OpenID",
+          "TRUSTe Enterprise Privacy Certification",
+          "SOX"
+        ]
+      } 
+    },
+    "dataBreaches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "date",
+          "url"
+        ],
+        "properties": {
+          "date": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "articles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "date": { "type": "string" },
+          "url": { "type": "string" }
+        }
+      }
+    },
+    "bugBountyProgramUrl": {
+      "type": "string",
+      "description": "Link to bug bounty program",
+      "examples": ["https://hackerone.com/bounty-program"]
+    },
+    "statusUrl": {
+      "type": "string",
+      "description": "Link to status page",
+      "examples": ["https://acme.com/status"]
+    },
+    "statusTwitter": {
+      "type": "string",
+      "description": "Twitter handle that communicates about service status & uptime",
+      "examples": ["acmestatus"]
+    },
+    "integrationsUrl": {
+      "type": "string",
+      "description": "Integrations overview URL"
+    },
+    "securityUrl": {
+      "type": "string",
+      "description": "Link to the security page",
+      "examples": ["https://hackerone.com/security"]
+    },
+    "gdprUrl": {
+      "type": "string",
+      "description": "Link to the security page",
+      "examples": ["https://hackerone.com/gdpr"]
+    },
+    "verified": {
+      "type": "boolean",
+      "description": "Verified by company representative",
+      "examples": [true]
+    },
+    "businessModel": {
+      "type": "array",
+      "description:": "Business model",
+      "items": {
+        "enum": [
+          "B2B",
+          "B2C",
+          "B2B2C"
+        ]
+      }
+    }
+  }
+}
